@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Editor</title>
+</head>
+
+<body>
+    <div class="editor" contenteditable="true">
+        <p>Hey <span class="auto-filled" variable="first-name">Mumanyi</span>!</p>
+        <p>
+            I'm Patrick from Flipzon. <span class="custom" variable="new job post">I noticed you just put out a job ad for Android engineers.</span> Flipzon has helped companies like <span class="auto-filled" variable="company">DroidzCo</span> save up to 50% in long-term support fees through our retainer-based maintenance offering.
+            We can ensure <span class="custom" variable="app name">FlappyPig</span> is always kept updated at a fraction of the cost of an in-house engineering team.
+        </p>
+        <p>
+            If you're interested in learning how we can keep <span class="auto-filled" variable="company-name">Kampuni</span> winning, let's
+            have a 30 minute chat.
+        </p>
+        <p>Thanks!</p>
+
+    </div>
+    <div class="editor" contenteditable="true">
+        <p>Hi <span class="auto-filled" variable="first-name">Mumanyi</span>,</p>
+        <p>
+            <span class="custom" variable="congrats"></span> At FantastiCorp we just built a
+            new API. <span class="custom" variable="transition">We want to keep you winning.</span>
+        </p>
+        <p>
+            If you're interested in learning how we can keep <span class="auto-filled" variable="company-name">Kampuni</span> winning, let's
+            have a 30 minute chat.
+        </p>
+        <p>Thanks!</p>
+
+    </div>
+    <style>
+        .editor {
+            font-size: 24px;
+            padding:5px 10px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            outline-color: #f6ae2d;
+            background-color: #fff;
+            color: #444;
+            margin-bottom:30px;
+        }
+        .editor:focus,
+        .editor:hover {
+            color:#666;
+        }
+        .editor:hover span,.editor:focus span {
+            color:#222;
+        }
+        .editor:hover span.auto-filled,
+        .editor:focus span.auto-filled {
+            border-bottom: 2px solid #dadada;
+        }
+        .editor:hover span.custom,
+        .editor:focus span.custom {
+            background-color: #f6e7ca;
+        }
+        .editor span:not(:empty):hover::after {
+            content:attr(variable);
+            background-color: #fff;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            border: 1px solid #f6ae2d;
+            background-color:#eee;
+            color:#444;
+            font-size: 14px;
+            padding:3px 8px;
+            border-bottom-width: 0px;
+            transform: translateX(-100%) translateY(-100%);
+            transition:
+              opacity 0.15s ease-in-out,
+              visibility 0s 0.15s ease-in-out;
+            position:absolute;
+        }
+        .editor span.custom:empty {
+            display:inline-block;
+        }
+        .editor span.custom:empty::after {
+            content: "{ "  attr(variable)  " }";
+            color: #f6ae2d;
+            padding:2px;
+            margin:-2px;
+        }
+    </style>
+</body>
+
+</html>
